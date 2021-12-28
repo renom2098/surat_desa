@@ -44,7 +44,7 @@
                             <td>
                                 <div>
                                     <a href="<?= base_url(); ?>pengajuan_surat/viewEditDataSurat/<?= $ks->id; ?>" class="btn btn-success">Edit Data</a>
-                                    <a href="#" class="btn btn-primary">Download Surat</a>
+                                    <a href="<?= base_url(); ?>pengajuan_surat/download_hasilSurat/<?= $ks->id; ?>" class="btn btn-primary">Download Surat</a>
                                 </div>
                             </td>
                         </tr>

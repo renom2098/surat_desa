@@ -14,6 +14,8 @@ $status_surat = $data->status_surat ?? '';
 $komentar_surat = $data->komentar_surat ?? '';
 $dari = $data->dari ?? '';
 $file_surat_dsd = $data->file_surat_dsd ?? '';
+$upload_ktp = $data->upload_ktp ?? 'default.jpg';
+$upload_kk = $data->upload_kk ?? 'default.jpg';
 ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -21,63 +23,77 @@ $file_surat_dsd = $data->file_surat_dsd ?? '';
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
-            <form action="<?= base_url(); ?>kelola_surat/update_dataSurat" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url(); ?>kelola_surat/aksi_upload" method="post" enctype="multipart/form-data">
               <input type="hidden" name="id" value="<?= $id; ?>">
             <div class="form-row">
 
               <div class="form-group col-md-6">
                 <label for="nomor_kk">Nomor KK</label>
-                <input type="text" class="form-control" id="nomor_kk" name="f[nomor_kk]" value="<?= $nomor_kk; ?>" disabled>
+                <input type="text" class="form-control" id="nomor_kk" name="nomor_kk" value="<?= $nomor_kk; ?>" disabled>
               </div>
 
               <div class="form-group col-md-6">
                 <label for="nomor_nik">Nomor NIK</label>
-                <input type="text" class="form-control" id="nomor_nik" name="f[nomor_nik]" value="<?= $nomor_nik; ?>" disabled>
+                <input type="text" class="form-control" id="nomor_nik" name="nomor_nik" value="<?= $nomor_nik; ?>" disabled>
               </div>
 
               <div class="form-group col-md-12">
                 <label for="dari">Nama</label>
-                <input type="text" class="form-control" id="dari" name="f[dari]" value="<?= $dari; ?>" disabled>
+                <input type="text" class="form-control" id="dari" name="dari" value="<?= $dari; ?>" disabled>
               </div>
 
               <div class="form-group col-md-6">
                 <label for="agama">Agama</label>
-                <input type="text" class="form-control" id="agama" name="f[agama]" value="<?= $agama; ?>" disabled>
+                <input type="text" class="form-control" id="agama" name="agama" value="<?= $agama; ?>" disabled>
               </div>
 
               <div class="form-group col-md-6">
                 <label for="jenis_kelamin">Jenis Kelamin</label>
-                <input type="text" class="form-control" id="jenis_kelamin" name="f[jenis_kelamin]" value="<?= $jenis_kelamin; ?>" disabled>
+                <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" value="<?= $jenis_kelamin; ?>" disabled>
               </div>
 
               <div class="form-group col-md-6">
                 <label for="tempat_lahir">Tempat Lahir</label>
-                <input type="text" class="form-control" id="tempat_lahir" name="f[tempat_lahir]" value="<?= $tempat_lahir; ?>" disabled>
+                <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="<?= $tempat_lahir; ?>" disabled>
               </div>
 
               <div class="form-group col-md-6">
                 <label for="tanggal_lahir">Tanggal Lahir</label>
-                <input type="text" class="form-control" id="tanggal_lahir" name="f[tanggal_lahir]" value="<?= $tanggal_lahir; ?>" disabled>
+                <input type="text" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="<?= $tanggal_lahir; ?>" disabled>
               </div>
 
               <div class="form-group col-md-6">
                 <label for="pekerjaan">Pekerjaan</label>
-                <input type="text" class="form-control" id="pekerjaan" name="f[pekerjaan]" value="<?= $pekerjaan; ?>" disabled>
+                <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" value="<?= $pekerjaan; ?>" disabled>
               </div>
 
               <div class="form-group col-md-6">
                 <label for="alamat">Alamat</label>
-                <input type="text" class="form-control" id="alamat" name="f[alamat]" value="<?= $alamat; ?>" disabled>
+                <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $alamat; ?>" disabled>
               </div>
 
               <div class="form-group col-md-12">
                     <label for="nama_surat">Jenis Surat</label>
-                    <textarea class="form-control" id="nama_surat" rows="3" name="f[nama_surat]" disabled><?= $nama_surat; ?> </textarea>
+                    <textarea class="form-control" id="nama_surat" rows="3" name="nama_surat" disabled><?= $nama_surat; ?> </textarea>
               </div>
 
               <div class="form-group col-md-12">
                     <label for="deskripsi_surat">Deskripsi Surat</label>
-                    <textarea class="form-control" id="deskripsi_surat" rows="5" name="f[deskripsi_surat]" disabled><?= $deskripsi_surat; ?> </textarea>
+                    <textarea class="form-control" id="deskripsi_surat" rows="5" name="deskripsi_surat" disabled><?= $deskripsi_surat; ?> </textarea>
+              </div>
+
+              <div class="form-group col-md-12">
+                <label>Photo KTP</label>
+                <div class="row">
+                  <img src="<?= base_url(); ?>data_upload/<?= $upload_ktp; ?>" width="400" height="300">
+                </div>
+              </div>
+
+              <div class="form-group col-md-12">
+                <label>Photo KK</label>
+                <div class="row">
+                  <img src="<?= base_url(); ?>data_upload/<?= $upload_kk; ?>" width="400" height="300">
+                </div>
               </div>
 
               <div class="form-group col-md-4">
@@ -89,7 +105,7 @@ $file_surat_dsd = $data->file_surat_dsd ?? '';
                       }
 
                       $attr = array('class' => 'form-control', 'id' => 'inputState', 'required' => 'required');
-                      echo form_dropdown('f[status_surat]', $options, $status_surat, $attr);
+                      echo form_dropdown('status_surat', $options, $status_surat, $attr);
                       unset($options);
                       unset($attr);
                   ?>
@@ -97,12 +113,12 @@ $file_surat_dsd = $data->file_surat_dsd ?? '';
 
               <div class="form-group col-md-12">
                     <label for="komentar_surat">Komentar</label>
-                    <textarea class="form-control" id="komentar_surat" rows="5" name="f[komentar_surat]"><?= $komentar_surat; ?> </textarea>
+                    <textarea class="form-control" id="komentar_surat" rows="5" name="komentar_surat"><?= $komentar_surat; ?> </textarea>
               </div>
 
               <div class="form-group">
                 <label for="exampleFormControlFile1">Upload Surat</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="file_surat">
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="file_surat_dsd">
               </div>
 
             </div>

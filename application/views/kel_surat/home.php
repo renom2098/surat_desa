@@ -44,6 +44,7 @@
                             <td>
                                 <div>
                                     <a href="<?= base_url(); ?>kelola_surat/viewEditDataSurat/<?= $ks->id; ?>" class="btn btn-primary">View</a>
+                                    <a href="<?= base_url(); ?>kelola_surat/delete_dataSurat/<?= $ks->id; ?>" class="btn btn-danger">Delete</a>
                                 </div>
                             </td>
                         </tr>

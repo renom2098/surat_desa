@@ -14,6 +14,8 @@ $status_surat = $data->status_surat ?? '';
 $komentar_surat = $data->komentar_surat ?? '';
 $dari = $data->dari ?? '';
 $file_surat_dsd = $data->file_surat_dsd ?? '';
+$upload_ktp = $data->upload_ktp ?? 'default.jpg';
+$upload_kk = $data->upload_kk ?? 'default.jpg';
 ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -98,6 +100,22 @@ $file_surat_dsd = $data->file_surat_dsd ?? '';
                     <label for="komentar_surat">Komentar</label>
                     <textarea class="form-control" id="komentar_surat" rows="5" name="f[komentar_surat]" disabled><?= $komentar_surat; ?> </textarea>
               </div>
+
+              <div class="form-group col-md-12">
+                <div class="row">
+                  <img src="<?= base_url(); ?>data_upload/<?= $upload_ktp; ?>" width="300" height="200">
+                </div>
+                <label>Upload KTP</label>
+                <input type="file" class="form-control-file" name="upload_ktp" size="20" accept="image/png, image/jpeg, image/jpg, image/gif">
+              </div>
+
+            <div class="form-group col-md-12">
+                <div class="row">
+                  <img src="<?= base_url(); ?>data_upload/<?= $upload_kk; ?>" width="300" height="200">
+                </div>
+                <label>Upload KK</label>
+                <input type="file" class="form-control-file" name="upload_kk" size="20" accept="image/png, image/jpeg, image/jpg, image/gif">
+            </div>
 
             </div>
             <button type="submit" class="btn btn-primary float-right">Edit</button>

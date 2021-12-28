@@ -2,10 +2,11 @@
 
 class m_pengSurat extends CI_Model {
 
-        public function insert_dataSurat() {
-                $form = $this->input->post("f");
+        public function insert_dataSurat($data) {
+                /*$form = $this->input->post("f");
                 $this->db->set($form);
-                return $this->db->insert("kelola_surat");
+                $this->db->insert("kelola_surat");*/
+                $this->db->insert('kelola_surat', $data);
         }
 
         public function get_dataSurat() {

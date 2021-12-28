@@ -33,77 +33,49 @@ class Kelola_surat extends CI_Controller {
         $this->_templateBottom();
     }
 
-    /*public function aksi_uploadSurat(){
-		$config['upload_path']          = './file_surat/';
-		$config['allowed_types']        = 'pdf|doc|docx';
-		$config['max_size']             = 3000;
-		$config['encrypt_name']			= FALSE;
-		$this->load->library('upload', $config);
-		if ( ! $this->upload->do_upload('file_surat_dsd'))
-		{
-				echo "gagal!";
-		}
-		else
-		{
-			$nomor_kk = $this->input->post('nomor_kk');
-            $nomor_nik = $this->input->post('nomor_nik');
-            $dari = $this->input->post('dari');
-            $agama = $this->input->post('agama');
-            $jenis_kelamin = $this->input->post('jenis_kelamin');
-            $tempat_lahir = $this->input->post('tempat_lahir');
-            $tanggal_lahir = $this->input->post('tanggal_lahir');
-            $pekerjaan = $this->input->post('pekerjaan');
-            $alamat = $this->input->post('alamat');
-            $nama_surat = $this->input->post('nama_surat');
-            $deskripsi_surat = $this->input->post('deskripsi_surat');
-            $status_surat = $this->input->post('status_surat');
-            $komentar_surat = $this->input->post('komentar_surat');
+    public function aksi_upload(){
+        $status_surat = $this->input->post('status_surat');
+        $komentar_surat = $this->input->post('komentar_surat');
+        $file_surat_dsd = $this->input->post('file_surat_dsd');
 
-            $file = $this->upload->data();
-            $file_surat_dsd = $file['file_name'];
 
-            $this->model->update_dataSurat(array(
-                'nomor_kk' => $nomor_kk,
-                'nomor_nik' => $nomor_nik,
-                'dari' => $dari,
-                'agama' => $agama,
-                'jenis_kelamin' => $jenis_kelamin,
-                'tempat_lahir' => $tempat_lahir,
-                'tanggal_lahir' => $tanggal_lahir,
-                'pekerjaan' => $pekerjaan,
-                'alamat' => $alamat,
-                'nama_surat' => $nama_surat,
-                'deskripsi_surat' => $deskripsi_surat,
-                'status_surat' => $status_surat,
-                'komentar_surat' => $komentar_surat,
+        $config['upload_path']          = './data_surat/';
+        $config['allowed_types']        = 'docx|doc|pdf';
+        $config['max_size']             = 10000;
 
-                'file_surat_dsd' => $file_surat_dsd
-                ), array('id' => $this->input->post('id')
-                    )
-            );
-			redirect('kelola_surat');
-		}
-	}*/
 
-	public function aksi_upload(){
-		$config['upload_path']          = './file_surat/';
-		$config['allowed_types']        = 'xls|xlsx|pdf|doc|docx';
-		$config['max_size']             = 5000;
-		$config['encrypt_name']			= FALSE;
-		$this->load->library('upload', $config);
-		$this->upload->initialize($config);
-		if ( ! $this->upload->do_upload('file_surat'))
-		{
-			echo "gagal!";
-		}
-		else
-		{
-			$data['file_surat_dsd'] = $this->upload->data("file_name");
-		}
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if( ! $this->upload->do_upload('file_surat_dsd')){
+        	/*$error = array('error' => $this->upload->display_errors());
+            echo '<div class="alert alert-danger">'.$error['error'].'</div>';
+            die();*/
+            $file_surat_dsd=$this->upload->data('file_name');
+        	$data = array(
+        	'status_surat' => $status_surat,
+        	'komentar_surat' => $komentar_surat,
+        	'file_surat_dsd' => $file_surat_dsd
+        	);
+
+	        $this->model->update_dataSurat($data);
+	        redirect("kelola_surat");
+
+        } else {
+        	$file_surat_dsd=$this->upload->data('file_name');
+        	$data = array(
+        	'status_surat' => $status_surat,
+        	'komentar_surat' => $komentar_surat,
+        	'file_surat_dsd' => $file_surat_dsd
+        	);
+
+	        $this->model->update_dataSurat($data);
+	        redirect("kelola_surat");
+        }
 	}
 
-	public function update_dataSurat(){
-        $this->model->update_dataSurat();
+	public function delete_dataSurat($id){
+        $this->model->delete_dataSurat($id);
         redirect("kelola_surat");
     }
 

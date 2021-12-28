@@ -21,13 +21,17 @@ class m_kelSurat extends CI_Model {
 		$this->db->update("kelola_surat", $data, $where);
 	}*/
 
-	function update_dataSurat(){
+	function update_dataSurat($data){
 	    $id = $this->input->post("id");
-	    $form = $this->input->post("f");
 
-	    $this->db->set($form);
+	    $this->db->set($data);
 	    $this->db->where("id", $id);
 	    return $this->db->update("kelola_surat");
 	}
+
+	function delete_dataSurat($id){
+        $this->db->where("id", $id);
+        return $this->db->delete("kelola_surat");
+    }
 
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2021 at 07:45 PM
+-- Generation Time: Dec 28, 2021 at 02:58 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -34,14 +34,16 @@ CREATE TABLE `kelola_surat` (
   `dari` varchar(128) DEFAULT NULL,
   `nomor_kk` varchar(128) DEFAULT NULL,
   `nomor_nik` varchar(128) DEFAULT NULL,
+  `upload_ktp` varchar(500) DEFAULT NULL,
+  `upload_kk` varchar(500) DEFAULT NULL,
   `agama` varchar(128) DEFAULT NULL,
   `jenis_kelamin` varchar(128) DEFAULT NULL,
   `tempat_lahir` varchar(128) DEFAULT NULL,
   `tanggal_lahir` varchar(128) DEFAULT NULL,
   `pekerjaan` varchar(128) DEFAULT NULL,
   `alamat` varchar(128) DEFAULT NULL,
-  `file_surat_dw` text DEFAULT NULL COMMENT 'surat dari warga',
-  `file_surat_dsd` text DEFAULT NULL COMMENT 'surat dari staf desa',
+  `file_surat_dw` varchar(500) DEFAULT NULL COMMENT 'surat dari warga',
+  `file_surat_dsd` varchar(500) DEFAULT NULL COMMENT 'surat dari staf desa',
   `status_surat` int(11) NOT NULL DEFAULT 1,
   `komentar_surat` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -50,12 +52,10 @@ CREATE TABLE `kelola_surat` (
 -- Dumping data for table `kelola_surat`
 --
 
-INSERT INTO `kelola_surat` (`id`, `nama_surat`, `deskripsi_surat`, `dari`, `nomor_kk`, `nomor_nik`, `agama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `pekerjaan`, `alamat`, `file_surat_dw`, `file_surat_dsd`, `status_surat`, `komentar_surat`) VALUES
-(1, 'Pengajuan pembuatan KK', 'lampiran tembusan untuk membuat KK', 'Warga01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, ''),
-(2, 'surat untuk pembuatan SIM  cek ', 'pembuatan SIM di samsat membutuhkan surat dari desa  cek ', 'Coba cek', '101010 cek', '1010 cek', 'aa', 'dd', 'hh', 'ss', 'aa', 'gg', NULL, NULL, 2, 'nomor kk tidak valid'),
-(3, 'coba2', 'coba2', 'Coba2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, NULL),
-(4, 'Surat Keterangan Usaha', 'Surat untuk membuka usaha persyaratan BRI', 'Dadan', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
-(5, 'jenis', 'deskripsi', 'Cek11', '11', '22', 'agama', 'jk', 'tempat', 'tanggal', 'pekerjaan', 'alamat', NULL, '1.jpg', 3, 'OKE ');
+INSERT INTO `kelola_surat` (`id`, `nama_surat`, `deskripsi_surat`, `dari`, `nomor_kk`, `nomor_nik`, `upload_ktp`, `upload_kk`, `agama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `pekerjaan`, `alamat`, `file_surat_dw`, `file_surat_dsd`, `status_surat`, `komentar_surat`) VALUES
+(1, 'Pengajuan pembuatan KK', 'lampiran tembusan untuk membuat KK', 'Warga01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, ''),
+(2, 'surat untuk pembuatan SIM  cek ', 'pembuatan SIM di samsat membutuhkan surat dari desa  cek ', 'Coba cek', '101010 cek', '1010 cek', NULL, NULL, 'aa', 'dd', 'hh', 'ss', 'aa', 'gg', NULL, 'RH_StudyGuide_V24.pdf', 3, 'good'),
+(29, 'Cek7  ', 'Cek8  ', 'Cek', '11', '22', 'foto_bebas.jpg', 'foto_kk1.jpg', 'Cek2', 'Cek3', 'Cek4', '12', 'Cek5', 'Cek6', NULL, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -159,7 +159,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `kelola_surat`
 --
 ALTER TABLE `kelola_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `level_user`
