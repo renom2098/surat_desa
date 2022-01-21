@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2021 at 02:58 PM
+-- Generation Time: Jan 21, 2022 at 01:50 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -45,17 +45,19 @@ CREATE TABLE `kelola_surat` (
   `file_surat_dw` varchar(500) DEFAULT NULL COMMENT 'surat dari warga',
   `file_surat_dsd` varchar(500) DEFAULT NULL COMMENT 'surat dari staf desa',
   `status_surat` int(11) NOT NULL DEFAULT 1,
-  `komentar_surat` text DEFAULT NULL
+  `komentar_surat` text DEFAULT NULL,
+  `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kelola_surat`
 --
 
-INSERT INTO `kelola_surat` (`id`, `nama_surat`, `deskripsi_surat`, `dari`, `nomor_kk`, `nomor_nik`, `upload_ktp`, `upload_kk`, `agama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `pekerjaan`, `alamat`, `file_surat_dw`, `file_surat_dsd`, `status_surat`, `komentar_surat`) VALUES
-(1, 'Pengajuan pembuatan KK', 'lampiran tembusan untuk membuat KK', 'Warga01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, ''),
-(2, 'surat untuk pembuatan SIM  cek ', 'pembuatan SIM di samsat membutuhkan surat dari desa  cek ', 'Coba cek', '101010 cek', '1010 cek', NULL, NULL, 'aa', 'dd', 'hh', 'ss', 'aa', 'gg', NULL, 'RH_StudyGuide_V24.pdf', 3, 'good'),
-(29, 'Cek7  ', 'Cek8  ', 'Cek', '11', '22', 'foto_bebas.jpg', 'foto_kk1.jpg', 'Cek2', 'Cek3', 'Cek4', '12', 'Cek5', 'Cek6', NULL, NULL, 1, NULL);
+INSERT INTO `kelola_surat` (`id`, `nama_surat`, `deskripsi_surat`, `dari`, `nomor_kk`, `nomor_nik`, `upload_ktp`, `upload_kk`, `agama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `pekerjaan`, `alamat`, `file_surat_dw`, `file_surat_dsd`, `status_surat`, `komentar_surat`, `id_user`) VALUES
+(1, 'Pengajuan pembuatan KK', 'lampiran tembusan untuk membuat KK', 'Warga01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '', 0),
+(2, 'surat untuk pembuatan SIM  cek ', 'pembuatan SIM di samsat membutuhkan surat dari desa  cek ', 'Coba cek', '101010 cek', '1010 cek', NULL, NULL, 'aa', 'dd', 'hh', 'ss', 'aa', 'gg', NULL, 'RH_StudyGuide_V24.pdf', 3, 'good', 0),
+(29, 'Cek7  ', 'Cek8  ', 'Cek', '11', '22', 'foto_bebas.jpg', 'foto_kk1.jpg', 'Cek2', 'Cek3', 'Cek4', '12', 'Cek5', 'Cek6', NULL, '', 1, ' ', 0),
+(30, 'Pembuatan Surat Domisili  ', 'Deskripsi Pembuatan Surat Domisili  ', 'Nama Dari Orang', '332211', '112233', 'blangko-kosong-e-ktp.jpg', 'KARTU_KELUARGA_KOSONGAN.png', 'Agama', 'Laki-Laki', 'Subang', '11 Oktober 2000', 'Staff IT PT Mekanik Jaya', 'Subang', NULL, 'RH_StudyGuide_V27.pdf', 3, 'KTP agak buram tolong foto dan upload ulang ', 0);
 
 -- --------------------------------------------------------
 
@@ -93,9 +95,9 @@ CREATE TABLE `status_surat` (
 --
 
 INSERT INTO `status_surat` (`id`, `nama_status`) VALUES
-(1, 'Diproses'),
-(2, 'Ditolak'),
-(3, 'Disetujui');
+(1, 'Surat sedang diproses di pelayanan desa'),
+(2, 'Surat Ditolak'),
+(3, 'Surat Disetujui');
 
 -- --------------------------------------------------------
 
@@ -159,7 +161,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `kelola_surat`
 --
 ALTER TABLE `kelola_surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `level_user`
@@ -177,7 +179,7 @@ ALTER TABLE `status_surat`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
