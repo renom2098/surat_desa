@@ -34,7 +34,16 @@
 
                 <div class="form-group col-md-6">
                     <label for="jenis_kelamin">Jenis Kelamin</label>
-                    <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+                    <br>
+                    <!-- <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin"> -->
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="jenis_kelamin" id="inlineRadio1" value="Laki-Laki">
+                        <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="jenis_kelamin" id="inlineRadio2" value="Perempuan">
+                        <label class="form-check-label" for="inlineRadio2">Perempuan</label>
+                    </div>
                 </div>
 
                 <div class="form-group col-md-6">
