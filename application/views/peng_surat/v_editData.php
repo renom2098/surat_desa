@@ -82,16 +82,16 @@ $upload_kk = $data->upload_kk ?? 'default.jpg';
                     <textarea class="form-control" id="deskripsi_surat" rows="5" name="f[deskripsi_surat]"><?= $deskripsi_surat; ?> </textarea>
               </div>
 
-              <div class="form-group col-md-2">
+              <div class="form-group col-md-6">
                 <label>Status</label>
                 <?php if ($status_surat == 1) {
-                      echo "<h1 class='bg bg-primary text-white'>Diproses</h1>";
+                      echo "<h1 class='bg bg-primary text-white'>Surat sedang diproses di pelayanan desa</h1>";
                   }
                       elseif ($status_surat == 2){
-                      echo "<h1 class='bg bg-danger text-white'>Ditolak</h1>";
+                      echo "<h1 class='bg bg-danger text-white'>Surat Ditolak</h1>";
                   }
                       elseif ($status_surat == 3){
-                      echo "<h1 class='bg bg-success text-white'>Disetujui</h1>";  
+                      echo "<h1 class='bg bg-success text-white'>Surat Disetujui</h1>";  
                   }
                   ?>
               </div>

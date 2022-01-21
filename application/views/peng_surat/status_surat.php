@@ -29,13 +29,13 @@
                             <td>
                                 
                             <?php if ($ks->status_surat == 1) {
-                                echo "<p class='badge badge-primary'>Diproses</p>";
+                                echo "<p class='badge badge-primary'>Surat sedang diproses di pelayanan desa</p>";
                             }
                                 elseif ($ks->status_surat == 2){
-                                echo "<p class='badge badge-danger'>Ditolak</p>";
+                                echo "<p class='badge badge-danger'>Surat Ditolak</p>";
                             }
                                 elseif ($ks->status_surat == 3){
-                                echo "<p class='badge badge-success'>Disetujui</p>";  
+                                echo "<p class='badge badge-success'>Surat Disetujui</p>";  
                             } 
                             ?>
                                 
